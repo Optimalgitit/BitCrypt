@@ -72,7 +72,7 @@ string_entry.pack()
 label2 = tk.Label(root, text="Enter password")
 label2.pack()
 
-password_entry = tk.Entry(root)
+password_entry = tk.Entry(root, show="*")
 password_entry.pack()
 
 encrypt_button = tk.Button(root, command=process_encrypt, text="Encrypt")
