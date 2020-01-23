@@ -17,6 +17,7 @@ class EncryptionWare:
         print(string)
         return string
     def encrypt(self):
+        key = self.key.encode()
         for i in key: # Do this for the amount of characters in the key
             key = f"{_hashlib.sha512(key).hexdigest()}{i}".encode() # Encrypt the key using SHA-512
         key = key.decode() # Convert key back to unicode
@@ -44,6 +45,5 @@ class EncryptionWare:
         key = key.decode() # Convert key back to unicode
         key = int(''.join([str(ord(i)) for i in key])) # Convert each character into a keycode number so it is workable
         key = int(str(key)[:16]) # Trim key to 16 characters to avoid integer overflow
-        print(key)
         string = ''.join([str(chr(int(i) - key)) for i in self.string.split('-')]) # Convert each character into a keycode to make it workable, then add the key to each character for the actual encryption
-        print(string)
+        return string
