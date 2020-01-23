@@ -6,6 +6,8 @@ from tkinter import filedialog
 
 root = tk.Tk()
 
+root.resizable(True, False)
+
 out = tk.Entry(root, width=100)
 out.pack()
 
