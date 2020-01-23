@@ -1,7 +1,8 @@
 import tkinter as tk
-from EncryptionWare import EncryptionWare
 import pyperclip as pyclip
 import time
+from EncryptionWare import EncryptionWare
+from tkinter import filedialog
 
 root = tk.Tk()
 
@@ -46,6 +47,19 @@ def paste_clip():
     string_entry.delete(0, tk.END)
     string_entry.insert(0, pyclip.paste())
 
+def paste_file():
+    to_paste = filedialog.askopenfile(filetypes=[("All Files", "*")]).read()
+    string_entry.delete(0, tk.END)
+    string_entry.insert(0, to_paste)
+
+def save_file():
+    try:
+        to_save = filedialog.asksaveasfilename(filetypes=[("All Files", "*")])
+        save_string = out.get()
+        file_to_save = open(to_save, mode="w")
+        file_to_save.write(save_string)
+    except:
+        pass
 main_canvas = tk.Canvas(root, width=200, height=50)
 main_canvas.pack()
 
@@ -66,6 +80,12 @@ encrypt_button.pack(side=tk.LEFT, padx=15, pady=10)
 
 decrypt_button = tk.Button(root, command=process_decrypt, text="Decrypt")
 decrypt_button.pack(side=tk.RIGHT, padx=15, pady=10)
+
+clipboard_button = tk.Button(root, command=save_file, text="To File")
+clipboard_button.pack(side=tk.BOTTOM, pady = 10)
+
+clipboard_button = tk.Button(root, command=paste_file, text="From File")
+clipboard_button.pack(side=tk.BOTTOM, pady = 1)
 
 clipboard_button = tk.Button(root, command=paste_clip, text="From Clipboard")
 clipboard_button.pack(side=tk.BOTTOM, pady = 10)
