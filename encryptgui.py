@@ -15,7 +15,8 @@ def process():
     out.insert(0, encrypted)
     pyclip.copy(encrypted)
     notification = tkinter.Tk()
-    notification.geometry("20x12+0+0")
+    notification.overrideredirect(True)
+    notification.geometry(f"150x20+{root.winfo_screenwidth() - 150}+{root.winfo_screenheight() - 80}")
     notifier_text = tkinter.Label(notification, text="Copied to clipboard!")
     notifier_text.pack()
     t1 = time.time()
@@ -28,7 +29,7 @@ def process():
 main_canvas = tkinter.Canvas(root, width=200, height=50)
 main_canvas.pack()
 
-label1 = tkinter.Label(main_canvas, text="Enter string")
+label1 = tkinter.Label(root, text="Enter string")
 label1.pack()
 
 string_entry = tkinter.Entry(root)
