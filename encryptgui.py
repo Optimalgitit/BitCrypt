@@ -42,6 +42,10 @@ def process_decrypt():
         notification.update()
     notification.destroy()
 
+def paste_clip():
+    string_entry.delete(0, tk.END)
+    string_entry.insert(0, pyclip.paste())
+
 main_canvas = tk.Canvas(root, width=200, height=50)
 main_canvas.pack()
 
@@ -62,5 +66,8 @@ encrypt_button.pack(side=tk.LEFT, padx=15, pady=10)
 
 decrypt_button = tk.Button(root, command=process_decrypt, text="Decrypt")
 decrypt_button.pack(side=tk.RIGHT, padx=15, pady=10)
+
+clipboard_button = tk.Button(root, command=paste_clip, text="From Clipboard")
+clipboard_button.pack(side=tk.BOTTOM, pady = 10)
 
 root.mainloop()
