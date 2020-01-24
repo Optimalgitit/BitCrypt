@@ -6,16 +6,17 @@ from tkinter import filedialog
 
 root = tk.Tk()
 
-root.resizable(True, False)
+root.title("BitCrypt")
+root.resizable(True, True)
 
-out = tk.Entry(root, width=100)
+out = tk.Text(root, width=100, height=10)
 out.pack()
 
 def process_encrypt():
-    encrypt = EncryptionWare(string_entry.get(), password_entry.get())
+    encrypt = EncryptionWare(string_entry.get("1.0",'end-1c'), password_entry.get())
     encrypted = encrypt.encrypt()
-    out.delete(0, tk.END)
-    out.insert(0, encrypted)
+    out.delete("1.0", tk.END)
+    out.insert("1.0", encrypted)
     pyclip.copy(encrypted)
     notification = tk.Tk()
     notification.overrideredirect(True)
@@ -29,10 +30,10 @@ def process_encrypt():
     notification.destroy()
 
 def process_decrypt():
-    decrypt = EncryptionWare(string_entry.get(), password_entry.get())
+    decrypt = EncryptionWare(string_entry.get("1.0",'end-1c'), password_entry.get())
     decrypted = decrypt.decrypt()
-    out.delete(0, tk.END)
-    out.insert(0, decrypted)
+    out.delete("1.0",'end-1c')
+    out.insert("1.0", decrypted)
     pyclip.copy(decrypted)
     notification = tk.Tk()
     notification.overrideredirect(True)
@@ -46,18 +47,18 @@ def process_decrypt():
     notification.destroy()
 
 def paste_clip():
-    string_entry.delete(0, tk.END)
-    string_entry.insert(0, pyclip.paste())
+    string_entry.delete("1.0",'end-1c')
+    string_entry.insert("1.0", pyclip.paste())
 
 def paste_file():
     to_paste = filedialog.askopenfile(filetypes=[("All Files", "*")]).read()
-    string_entry.delete(0, tk.END)
-    string_entry.insert(0, to_paste)
+    string_entry.delete("1.0",'end-1c')
+    string_entry.insert("1.0", to_paste)
 
 def save_file():
     try:
         to_save = filedialog.asksaveasfilename(filetypes=[("All Files", "*")])
-        save_string = out.get()
+        save_string = out.get("1.0",'end-1c')
         file_to_save = open(to_save, mode="w")
         file_to_save.write(save_string)
     except:
@@ -68,7 +69,7 @@ main_canvas.pack()
 label1 = tk.Label(root, text="Enter string")
 label1.pack()
 
-string_entry = tk.Entry(root)
+string_entry = tk.Text(root, height=20)
 string_entry.pack()
 
 label2 = tk.Label(root, text="Enter password")
