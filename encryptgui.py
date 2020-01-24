@@ -7,7 +7,7 @@ from tkinter import filedialog
 root = tk.Tk()
 
 root.title("BitCrypt")
-root.resizable(True, True)
+root.resizable(True, False)
 
 out = tk.Text(root, width=100, height=10)
 out.pack()
