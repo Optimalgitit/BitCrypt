@@ -1,7 +1,7 @@
 import tkinter as tk
 import pyperclip as pyclip
 import time
-from EncryptionWare import EncryptionWare
+from BitLib import BitLib
 from tkinter import filedialog
 
 sample_text = """
@@ -40,7 +40,7 @@ out = tk.Text(root, width=100, height=10)
 out.pack()
 
 def process_encrypt():
-    encrypt = EncryptionWare(string_entry.get("1.0",'end-1c'), password_entry.get())
+    encrypt = BitLib(string_entry.get("1.0",'end-1c'), password_entry.get())
     encrypted = encrypt.encrypt()
     out.delete("1.0", tk.END)
     out.insert("1.0", encrypted)
@@ -57,7 +57,7 @@ def process_encrypt():
     notification.destroy()
 
 def process_decrypt():
-    decrypt = EncryptionWare(string_entry.get("1.0",'end-1c'), password_entry.get())
+    decrypt = BitLib(string_entry.get("1.0",'end-1c'), password_entry.get())
     decrypted = decrypt.decrypt()
     out.delete("1.0",'end-1c')
     out.insert("1.0", decrypted)

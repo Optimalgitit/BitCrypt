@@ -1,6 +1,6 @@
 import hashlib as _hashlib
 
-class EncryptionWare:
+class BitLib:
     def __init__(self, string, key):
         self.string = string
         self.key = key
