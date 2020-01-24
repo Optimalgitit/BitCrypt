@@ -4,6 +4,33 @@ import time
 from EncryptionWare import EncryptionWare
 from tkinter import filedialog
 
+sample_text = """
+Hello, can you encrypt this text? This is
+the sample text of the program. What does
+this text do? What is it's purpose? Who
+knows? The computer knows. The computer
+knows a lot, and we are very dependent on
+it. Checking the time? Computer. Everything?
+Computer. You're dependent on the computer
+as well. But are these computers secure?
+Should we trust these computers with our
+personal data? Well it depends. There are
+hackers out there. But that doesn't matter
+anymore, as you getting hacked is a very
+low probability. However, if you leave your
+computer alone for even a minute, anyone
+can just go on it and steal all your data.
+Isn't that scary? You don't want that to
+happen. But it won't if you use this program.
+You can protect your data with a password,
+and it would take a long time for someone
+to decrypt it without the password. What
+are you waiting for? Secure everything. Do
+it. Your data is important. Come on. You
+need to, you don't want someone extracting
+your company's info and you getting blamed
+for it. You don't wanna get sued. Do it."""
+
 root = tk.Tk()
 
 root.title("BitCrypt")
@@ -92,5 +119,7 @@ clipboard_button.pack(side=tk.BOTTOM, pady = 1)
 
 clipboard_button = tk.Button(root, command=paste_clip, text="From Clipboard")
 clipboard_button.pack(side=tk.BOTTOM, pady = 10)
+
+string_entry.insert("1.0", sample_text)
 
 root.mainloop()
