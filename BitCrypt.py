@@ -4,8 +4,7 @@ import time
 from BitLib import BitLib
 from tkinter import filedialog
 
-sample_text = """
-Hello, can you encrypt this text? This is
+sample_text = """Hello, can you encrypt this text? This is
 the sample text of the program. What does
 this text do? What is it's purpose? Who
 knows? The computer knows. The computer
